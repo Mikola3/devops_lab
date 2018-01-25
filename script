@@ -1,0 +1,27 @@
+#!/bin/bash 
+sudo yum install -y gcc gcc-c++ make git patch openssl-devel zlib-devel readline-devel sqlite-devel bzip2-devel 
+git clone git://github.com/yyuu/pyenv.git ~/.pyenv 
+export PATH="$HOME/.pyenv/bin:$PATH" 
+eval "$(pyenv init -)"
+pyenv install 2.7.8
+pyenv install 3.6.4
+sudo pip install virtualenv
+sudo yum -y install python-virtualenv
+
+git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+
+echo "Set environment laba2 for python 2.7.8"
+pyenv global 2.7.8
+pyenv virtualenv laba2
+pyenv activate laba2
+echo "check version environment laba2"
+python -V
+pyenv deactivate
+
+echo "Set environment laba2 for python 3.6.4"
+pyenv global 3.6.4
+pyenv virtualenv laba3
+pyenv activate laba3
+echo "check version environment laba3"
+python -V
+
