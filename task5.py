@@ -21,7 +21,7 @@ parser.add_argument("-i","--id", help="Github's id", action="store_true")
 parser.add_argument("-p","--pushtime", help="Push Time", action="store_true")
 
 o = input("Please, Enter Github's Owner: ")
-r = "alenaPy/devops_lab"#input("Please, Enter Github's repository: ")
+r = "alenaPy/devops_lab"
 
 # set variables
 p = parser.parse_args()
@@ -33,7 +33,7 @@ url = "https://api.github.com/repos/" + str(r) + "/" + "pulls"
 # print(url)
 reqget = requests.get(url, auth=(o, pwd))
 reqjson = reqget.json()
-print(json.dumps(reqjson, sort_keys = True, indent = 4, ensure_ascii = False));
+#print(json.dumps(reqjson, sort_keys = True, indent = 4, ensure_ascii = False));
 
 # check input parameters 
 if p.version:
