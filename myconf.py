@@ -1,2 +1,2 @@
-output="txt"
-interval=5
+output = "txt"
+interval = 5
