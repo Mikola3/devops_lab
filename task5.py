@@ -4,14 +4,8 @@ import requests
 import argparse
 # from datetime import datetime
 
-# auth. on Github
-import getpass
-pwd = getpass.getpass(prompt="Please, Enter Your Password: ")
-
 # parsing
 parser = argparse.ArgumentParser()
-parser.add_argument("-u", "--user", help="GH's user", action="store_true")
-parser.add_argument("-o", "--owner", help="GH's owner", action="store_true")
 parser.add_argument("-r", "--repos", help="GH's repository", action="store_true")
 parser.add_argument("-v", "--version", help="Script's version", action="store_true")
 parser.add_argument("-l", "--label", help="GH's label", action="store_true")
@@ -19,24 +13,27 @@ parser.add_argument("--ref", help="GH's ref", action="store_true")
 parser.add_argument("-i", "--id", help="GH's id", action="store_true")
 parser.add_argument("-p", "--pushtime", help="Push Time", action="store_true")
 
-o = input("Please, Enter Github's Owner: ")
-r = "alenaPy/devops_lab"
-
 # set variables
 p = parser.parse_args()
-u = p.user
 
-print(o)
+u = input("Please, Enter Github's User: ")
+r = "alenaPy/devops_lab"
+
+# auth. on Github
+import getpass
+pwd = getpass.getpass(prompt="Please, Enter Your Password: ")
+
+print(u)
 print(r)
 url = "https://api.github.com/repos/" + str(r) + "/" + "pulls"
 # print(url)
-reqget = requests.get(url, auth=(o, pwd))
+reqget = requests.get(url, auth=(u, pwd))
 reqjson = reqget.json()
 # print(json.dumps(reqjson, sort_keys=True, indent=4, ensure_ascii=False))
 
 # check input parameters
 if p.version:
-    print("Programm's version is script 1.0")
+    print("Programm's version is script_1.0")
 elif p.repos:
     print(reqjson[0].get("base").get("repo").get("name"))
 elif p.pushtime:
