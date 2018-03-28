@@ -1,1 +1,1 @@
-echo "hello"
+echo "hello-$BUILD_NUMBER"
